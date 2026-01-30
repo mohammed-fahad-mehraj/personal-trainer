@@ -1,0 +1,191 @@
+Project Type:
+Personal Trainer Portfolio Website (Frontend Only)
+
+Tech Stack Requirements:
+
+React + Vite
+
+Tailwind CSS
+
+Fully responsive (mobile, tablet, desktop)
+
+Clean component structure
+
+No backend required
+
+Optimized images & fast loading
+
+🎯 Website Goal
+
+Create a professional personal trainer portfolio website that builds trust, shows expertise, and converts visitors into leads.
+The site should feel premium, motivational, and modern, not like a generic gym website.
+
+🎨 DESIGN DIRECTION
+
+Theme: Light, clean, energetic
+
+Primary Colors: White, soft gray, subtle blue or green accent
+
+Typography:
+
+Headings: Bold, modern sans-serif
+
+Body: Clean, readable, medium weight
+
+UI Style:
+
+Rounded cards
+
+Soft shadows
+
+Smooth hover animations
+
+Plenty of white space
+
+🏋️‍♂️ HERO SECTION (Very Important)
+
+Full-width hero section
+
+Background:
+
+High-quality fitness/trainer image
+
+Subtle dark overlay for text readability
+
+Content:
+
+Trainer Name (example: Alex Carter)
+
+Strong headline:
+
+“Transform Your Body. Elevate Your Life.”
+
+Short subheading:
+
+Certified Personal Trainer helping people build strength, confidence, and sustainable fitness.
+
+Buttons:
+
+Primary: “Book Free Consultation”
+
+Secondary: “View Training Programs”
+
+👤 ABOUT SECTION
+
+Professional trainer image on one side
+
+Text content:
+
+Short personal intro
+
+Years of experience
+
+Certifications
+
+Training philosophy (client-focused, sustainable fitness, mindset + body)
+
+Include small icon highlights:
+
+Certified Trainer
+
+Nutrition Guidance
+
+1-on-1 Coaching
+
+🧠 TRAINING PHILOSOPHY (Replace boring sections)
+
+Create a unique section called:
+
+“My Coaching Philosophy”
+
+Include 3 cards:
+
+Sustainable Fitness – long-term results, not quick fixes
+
+Personalized Plans – every body is different
+
+Mindset First – discipline, confidence, consistency
+
+💪 SERVICES SECTION
+
+Show services in clean cards:
+
+Personal Training (1-on-1)
+
+Online Coaching
+
+Fat Loss Programs
+
+Muscle Building Programs
+
+Lifestyle & Habit Coaching
+
+Each card should include:
+
+Icon
+
+Short description
+
+Hover animation
+
+🏆 RESULTS / TESTIMONIALS
+
+Client transformation testimonials
+
+Card layout with:
+
+Client name
+
+Short success story
+
+Star rating icons
+
+Optional before/after image placeholders
+
+📅 CTA SECTION
+
+Strong call-to-action:
+
+“Ready to Transform Your Body?”
+
+Button: Book Your Free Session
+
+Secondary text: Limited spots available
+
+📩 CONTACT SECTION
+
+Clean contact form:
+
+Name
+
+Email
+
+Message
+
+Trainer email & social icons
+
+Simple validation (frontend only)
+
+🦶 FOOTER
+
+Trainer name & logo text
+
+Social links
+
+Copyright text
+
+Minimal & clean
+
+⚙️ TECHNICAL REQUIREMENTS
+
+Use reusable React components
+
+Tailwind utility classes only
+
+Mobile-first design
+
+Smooth scroll
+
+Accessible color contrast
+
+No external UI libraries
