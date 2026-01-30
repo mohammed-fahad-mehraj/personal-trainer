@@ -250,7 +250,7 @@ export default function Home() {
             {
               title: "Habit Coaching",
               desc: "Lifestyle optimization focusing on sleep, stress, and nutrition behaviors.",
-              img: "https://images.unsplash.com/photo-1552674605-4694553018c3?w=800&auto=format&fit=crop&q=60"
+              img: "/images/habit-coaching.jpg"
             }
           ].map((service, idx) => (
             <motion.div 
@@ -369,7 +369,7 @@ export default function Home() {
 
             <div className="mt-12 p-6 bg-secondary/50 rounded-2xl border border-border">
               <h4 className="font-bold mb-2">Have a quick question?</h4>
-              <p className="text-muted-foreground mb-4">Email me directly at alex@fitcore.com or use the form.</p>
+              <p className="text-muted-foreground mb-4">Email me directly at alex@fitalex.com or use the form.</p>
             </div>
           </div>
 
@@ -388,11 +388,11 @@ export default function Home() {
               <Dumbbell className="w-4 h-4 text-white" />
             </div>
             <span className="text-lg font-bold font-display tracking-tight">
-              FIT<span className="text-primary">CORE</span>
+              FIT<span className="text-primary">ALEX</span>
             </span>
           </div>
           <div className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} FitCore Training. All rights reserved.
+            © {new Date().getFullYear()} FitAlex Training. All rights reserved.
           </div>
           <div className="flex gap-6">
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Instagram</a>

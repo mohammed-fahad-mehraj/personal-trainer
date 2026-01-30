@@ -36,7 +36,7 @@ export function Navbar() {
             <Dumbbell className="w-6 h-6 text-white" />
           </div>
           <span className={`text-xl font-bold font-display tracking-tight ${scrolled ? 'text-foreground' : 'text-foreground lg:text-white'}`}>
-            FIT<span className="text-primary">CORE</span>
+            FIT<span className="text-primary">ALEX</span>
           </span>
         </div>
 
