@@ -24,3 +24,12 @@ export type InsertContactRequest = z.infer<typeof insertContactRequestSchema>;
 
 // Response types
 export type ContactRequestResponse = ContactRequest;
+
+
+export const enquiries = pgTable("enquiries", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});

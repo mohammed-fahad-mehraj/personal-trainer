@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { Navbar } from "@/components/Navbar";
@@ -11,10 +12,88 @@ import {
   Zap, 
   Star,
   CheckCircle2,
-  ChevronRight
+  ChevronRight,
+  Clock,
+  Calendar,
+  X
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
+interface Service {
+  title: string;
+  desc: string;
+  img: string;
+  duration: string;
+  sessions: string;
+  features: string[];
+  ideal: string;
+}
+
+const services: Service[] = [
+  {
+    title: "1-on-1 Personal Training",
+    desc: "In-person coaching sessions focusing on form, intensity, and immediate feedback.",
+    img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=60",
+    duration: "60 min sessions",
+    sessions: "2-4x per week",
+    features: ["Custom workout programming", "Real-time form correction", "Progress tracking", "Nutrition guidance"],
+    ideal: "Those who prefer hands-on coaching and accountability"
+  },
+  {
+    title: "Online Coaching",
+    desc: "Complete programming, nutrition guidance, and weekly check-ins delivered via app.",
+    img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&auto=format&fit=crop&q=60",
+    duration: "Monthly program",
+    sessions: "Weekly check-ins",
+    features: ["App-based workouts", "Video tutorials", "Macro tracking", "Direct messaging support"],
+    ideal: "Busy professionals who need flexibility"
+  },
+  {
+    title: "Transformation Challenge",
+    desc: "12-week intensive program designed for rapid but sustainable body recomposition.",
+    img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&auto=format&fit=crop&q=60",
+    duration: "12 weeks",
+    sessions: "5x per week training",
+    features: ["Complete meal plans", "Progress photos", "Community support", "Before/after documentation"],
+    ideal: "Those ready for a complete lifestyle overhaul"
+  },
+  {
+    title: "Muscle Building",
+    desc: "Hypertrophy focused training blocks designed to maximize lean muscle growth.",
+    img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&auto=format&fit=crop&q=60",
+    duration: "8-12 week blocks",
+    sessions: "4-5x per week",
+    features: ["Progressive overload programming", "Muscle-specific training", "Recovery protocols", "Supplement guidance"],
+    ideal: "Those looking to build size and strength"
+  },
+  {
+    title: "Fat Loss Protocol",
+    desc: "Metabolic conditioning and nutrition strategies to shed fat while preserving muscle.",
+    img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=60",
+    duration: "8-16 weeks",
+    sessions: "4x per week + cardio",
+    features: ["HIIT & strength combo", "Calorie cycling", "Metabolic testing", "Body composition tracking"],
+    ideal: "Those wanting to lean out sustainably"
+  },
+  {
+    title: "Habit Coaching",
+    desc: "Lifestyle optimization focusing on sleep, stress, and nutrition behaviors.",
+    img: "/images/habit-coaching.jpg",
+    duration: "Ongoing",
+    sessions: "Bi-weekly calls",
+    features: ["Sleep optimization", "Stress management", "Mindful eating", "Daily habit tracking"],
+    ideal: "Those struggling with consistency"
+  }
+];
 
 export default function Home() {
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -221,45 +300,16 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              title: "1-on-1 Personal Training",
-              desc: "In-person coaching sessions focusing on form, intensity, and immediate feedback.",
-              img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=60"
-            },
-            {
-              title: "Online Coaching",
-              desc: "Complete programming, nutrition guidance, and weekly check-ins delivered via app.",
-              img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&auto=format&fit=crop&q=60"
-            },
-            {
-              title: "Transformation Challenge",
-              desc: "12-week intensive program designed for rapid but sustainable body recomposition.",
-              img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&auto=format&fit=crop&q=60"
-            },
-            {
-              title: "Muscle Building",
-              desc: "Hypertrophy focused training blocks designed to maximize lean muscle growth.",
-              img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&auto=format&fit=crop&q=60"
-            },
-            {
-              title: "Fat Loss Protocol",
-              desc: "Metabolic conditioning and nutrition strategies to shed fat while preserving muscle.",
-              img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=60"
-            },
-            {
-              title: "Habit Coaching",
-              desc: "Lifestyle optimization focusing on sleep, stress, and nutrition behaviors.",
-              img: "/images/habit-coaching.jpg"
-            }
-          ].map((service, idx) => (
+          {services.map((service, idx) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
+              onClick={() => setSelectedService(service)}
               className="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer shadow-lg"
+              data-testid={`card-service-${idx}`}
             >
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors z-10" />
               <img 
@@ -279,6 +329,82 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
+
+        <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
+          <DialogContent className="max-w-2xl overflow-hidden p-0">
+            {selectedService && (
+              <>
+                <div className="relative h-56">
+                  <img 
+                    src={selectedService.img} 
+                    alt={selectedService.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <div className="absolute bottom-4 left-6 right-6">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-display font-bold text-white">
+                        {selectedService.title}
+                      </DialogTitle>
+                    </DialogHeader>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-muted-foreground mb-6">{selectedService.desc}</p>
+                  
+                  <div className="flex gap-6 mb-6">
+                    <div className="flex items-center gap-2 text-sm">
+                      <Clock className="w-4 h-4 text-primary" />
+                      <span>{selectedService.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Calendar className="w-4 h-4 text-primary" />
+                      <span>{selectedService.sessions}</span>
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="font-semibold mb-3">What's Included:</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {selectedService.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-secondary/50 rounded-xl mb-6">
+                    <p className="text-sm">
+                      <span className="font-semibold">Ideal for: </span>
+                      {selectedService.ideal}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <Link to="contact" smooth={true} offset={-80} className="flex-1">
+                      <Button 
+                        className="w-full" 
+                        onClick={() => setSelectedService(null)}
+                        data-testid="button-book-program"
+                      >
+                        Book Free Consultation
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="outline" 
+                      onClick={() => setSelectedService(null)}
+                      data-testid="button-close-modal"
+                    >
+                      Close
+                    </Button>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </section>
 
       {/* Testimonials */}
