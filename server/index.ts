@@ -85,7 +85,7 @@ app.use((req, res, next) => {
     app.use(express.static(path.join(__dirname, "../client/dist")));
 
     // Catch-all route for SPA (React Router)
-    app.get("*", (req, res) => {
+    app.get("/:all(*)", (req, res) => {
       res.sendFile(path.join(__dirname, "../client/dist/index.html"));
     });
   } else {
